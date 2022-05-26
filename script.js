@@ -22,12 +22,14 @@ let questions = [
 ]
 
 let score = 0;
+let questionNum = 0;
 
 let initialBox = document.getElementById("initialBox");
 let timer = document.getElementById("timer");
 let startButton = document.getElementById("startButton");
 let questionBox = document.getElementById("questionBox");
 let promptList = document.getElementById("promptList");
+let listCreater = document.createElement("ul");
 
 let timeLeft = 30;
 let penaltyTime = 10;
@@ -41,6 +43,24 @@ startButton.addEventListener("click", function(){
             timer.textContent = "Time is up sorry!";
         }
 }, 1000);
+        Start(questionNum)
 }
-    
-)
+);
+
+    function Start(questionNum) {
+        questionBox.innerHTML = "";
+        listCreater.innerHTML = "";
+
+        for (let i = 0; i < questions.length; i++) {
+            let userQuest = questions[questionNum].quest;
+            let userChoice = questions[questionNum].choice;
+            questionBox.textContent = userQuest;
+    }
+
+    userChoice.forEach (function(ansList){
+        let listedContent = document.createElement("li");
+        listedContent.textContent = ansList;
+        questionBox.appendChild(listCreater);
+        listedContent.addEventListener("click", (compare));
+    })
+}
